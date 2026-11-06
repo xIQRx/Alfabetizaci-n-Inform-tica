@@ -646,7 +646,7 @@
       item.appendChild(dl);
       grid.appendChild(item);
     });
-    card.appendChild(grid);
+    
     card.appendChild(form);
     card.appendChild(msg);
 
