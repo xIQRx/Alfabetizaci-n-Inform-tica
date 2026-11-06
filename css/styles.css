@@ -302,8 +302,8 @@ footer ul{list-style:none; padding:0; margin:0;}
 /* Botón flotante de WhatsApp */
 .whatsapp-float {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
+  right: 30px;   
+  top: 30px;
   z-index: 1000;
   width: 60px;
   height: 60px;
