@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
+  <title>Alfabetización Informática – SENA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/testimonios.css"> 
+  <link rel="stylesheet" href="/css/whatsapp.css"> 
+</head>
+
+<body>
+
+  <div class="topbar">
+    <div class="wrap">
+      <span>Servicio Nacional de Aprendizaje</span>
+      <span>Formación complementaria <strong>100% gratuita</strong></span>
+    </div>
+  </div>
+
+  <header class="hero hero-grid">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow-badge">Programa SENA</span>
+        <h1 class="title">El celular deja de ser un misterio</h1>
+        <p class="subtitle">Alfabetización Informática para adultos mayores: aprende a usar tu celular paso a paso, con
+          calma y con acompañamiento de un instructor.</p>
+        <div class="hero-meta">
+          <div><span>Duración</span><strong>70 horas</strong></div>
+          <div><span>Dirigido a</span><strong>Adultos mayores</strong></div>
+          <div><span>Costo</span><strong>Gratuito</strong></div>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="phone">
+          <div class="dot"></div>
+          <p>¡Hola! Hoy aprenderás a utilizar tu celular.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="intro">
+    <div class="wrap">
+      <p class="lead">Un curso pensado para que uses tu celular con confianza: encenderlo, tocar la pantalla, conectarte
+        a internet e instalar tus aplicaciones favoritas. Sin prisa, sin tecnicismos y con letra grande.</p>
+    </div>
+  </section>
+
+  <section class="access" id="access">
+    <div class="wrap">
+      <h2>Ingresa al curso</h2>
+      <p class="lead-small">Elige tu perfil para continuar.</p>
+
+      <div class="profile-tabs" id="profileTabs">
+        <button type="button" class="tab-btn active" data-tab="estudiante">🎓 Soy estudiante</button>
+        <button type="button" class="tab-btn" data-tab="profesor">👩‍🏫 Soy profesor / administrador</button>
+      </div>
+
+      <div class="login-card" id="panel-estudiante">
+        <h3>Acceso de estudiante</h3>
+        <p class="m-desc">Ingresa tu número de cédula. Debe estar autorizado previamente por tu profesor.</p>
+        <form id="formEstudiante" class="login-form">
+          <input type="text" inputmode="numeric" id="cedulaInput" placeholder="Ej: 1017123456" required>
+          <button type="submit" class="btn-login">Ingresar al curso</button>
+        </form>
+        <p class="form-msg" id="msgEstudiante"></p>
+      </div>
+
+      <div class="login-card" id="panel-profesor" hidden>
+        <h3>Acceso de administrador</h3>
+        <p class="m-desc">Inicia sesión con tu correo y contraseña de profesor.</p>
+        <form id="formProfesor" class="login-form">
+          <input type="email" id="adminEmail" placeholder="correo@sena.edu.co" required>
+          <input type="password" id="adminPass" placeholder="Contraseña" required>
+          <button type="submit" class="btn-login">Iniciar sesión</button>
+        </form>
+        <p class="form-msg" id="msgProfesor"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="admin-panel" id="adminPanel" hidden>
+    <div class="wrap">
+      <h2>Panel del profesor</h2>
+      <p class="lead-small">Agrega o elimina las cédulas autorizadas para ingresar al curso.</p>
+      <form id="formAgregarCedula" class="login-form admin-form">
+        <input type="text" inputmode="numeric" id="nuevaCedula" placeholder="Número de cédula" required>
+        <input type="text" id="nuevoNombre" placeholder="Nombre del estudiante (opcional)">
+        <button type="submit" class="btn-login">Agregar cédula</button>
+      </form>
+      <ul class="cedulas-list" id="listaCedulas"></ul>
+
+      <h3 class="activity-admin-title">Actividades de los módulos</h3>
+      <p class="m-desc">Elige un módulo, escribe la instrucción de su actividad y agrega imágenes de apoyo. Solo tú
+        (administrador) puedes editar esto; los estudiantes solo lo verán.</p>
+      <select id="actividadSelector" class="activity-select">
+        <option value="funciones">1. Funciones del celular</option>
+        <option value="encender-apagar">2. Encender y apagar el celular</option>
+        <option value="pantalla-tactil">3. Familiarizarse con la pantalla táctil</option>
+        <option value="wifi">4. Configurar Wi-Fi</option>
+        <option value="apps">5. Instalar y organizar aplicaciones</option>
+        <option value="nequi">6. Nequi: manejo de dinero digital</option>
+        <option value="hotmail">7. Hotmail / Outlook</option>
+      </select>
+      <form id="formActividad" class="login-form">
+        <textarea id="actividadTexto" rows="3" placeholder="Escribe aquí la actividad para este módulo."></textarea>
+        <label class="btn-upload" for="actividadImagenes">Agregar imágenes</label>
+        <input type="file" id="actividadImagenes" accept="image/*" multiple style="display:none;">
+        <div class="preview-grid" id="actividadPreview"></div>
+        <button type="submit" class="btn-login">Guardar actividad</button>
+      </form>
+      <p class="form-msg" id="msgActividad"></p>
+      <h3 class="activity-admin-title">Calificar entregas de los aprendices</h3>
+      <p class="m-desc">Elige un módulo para ver las evidencias que subieron los aprendices, descargarlas y ponerles una
+        nota.</p>
+      <select id="entregaSelector" class="activity-select">
+        <option value="funciones">Funciones del celular</option>
+        <option value="encender-apagar">1. Encender y apagar el celular</option>
+        <option value="pantalla-tactil">2. Familiarizarse con la pantalla táctil</option>
+        <option value="wifi">3. Configurar Wi-Fi</option>
+        <option value="apps">4. Instalar y organizar aplicaciones</option>
+        <option value="nequi">5. Nequi: manejo de dinero digital</option>
+        <option value="hotmail">6. Hotmail / Outlook</option>
+      </select>
+      <div class="entregas-list" id="listaEntregas"></div>
+      <button type="button" class="btn-logout" id="btnCerrarSesionAdmin">Cerrar sesión</button>
+    </div>
+  </section>
+
+  <section class="benefits">
+    <div class="wrap">
+      <h2>¿Por qué tomar este programa?</h2>
+      <div class="benefits-grid">
+        <div class="benefit">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M12 2v6" />
+              <path d="M18.4 6.6a9 9 0 1 1-12.8 0" />
+            </svg></div>
+          <h3>Aprendes a tu ritmo</h3>
+          <p>Clases cortas, con pasos sencillos y tiempo para practicar cada tema antes de avanzar al siguiente.</p>
+        </div>
+        <div class="benefit">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M9 12h6M12 9v6" />
+            </svg></div>
+          <h3>Explicaciones claras</h3>
+          <p>Instructores capacitados en enseñar a personas mayores, con letra grande y ejemplos de la vida diaria.</p>
+        </div>
+        <div class="benefit">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M12 3l7 4v5c0 5-3 7-7 9-4-2-7-4-7-9V7z" />
+            </svg></div>
+          <h3>Gratuito y certificado</h3>
+          <p>Formación del SENA sin costo, con certificado de asistencia al terminar las 48 horas del programa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="program" id="cursoContenido" hidden>
+    <div class="wrap">
+      <div class="welcome-banner" id="welcomeBanner"></div>
+      <button type="button" class="btn-logout" id="btnCerrarSesion" style="margin:-8px 0 20px;">Cerrar sesión</button>
+      <h2>Lo que vas a practicar</h2>
+      <p class="lead-small">El programa está organizado en seis módulos prácticos. En cada uno realizarás actividades
+        guiadas con tu propio celular.</p>
+      
+      <div class="module">
+        <h3><span class="m-num">1</span> Funciones del celular</h3>
+        <p class="m-desc">Aprende sobre las funciones del celular como encenderlas y apagarlas, según la necesidad.</p>
+        <h4>Actividades a desarrollar</h4>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg> Encender el wi-fi y apagarlo.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg> Encender el wi-fi y ver que redes estan disponibles.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg> Conectarse a una red wi-fi conocida.</li>  
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg> Encender y apagar el Bluetooth.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg> Ver que disositivos salen en el Bluetooth.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg> Conectarse a un dispositivo conocido (Bluetooth).</li> 
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg> Apagar y encender los DATOS.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>Verificar el consumo de los DATOS </li>     
+        </ul>
+        <a href="funsiones.html" target="_blank" rel="noopener" class="module-btn">Ir a funciones del celular →</a>        
+      </div>  
+
+      <div class="module">
+        <h3><span class="m-num">2</span> Encender y apagar el celular</h3>
+        <p class="m-desc">El primer paso: perder el miedo a los botones y reconocer las partes básicas del equipo.</p>
+        <h4>Actividades a desarrollar</h4>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg> Localizar el botón de encendido y mantenerlo presionado hasta ver la pantalla.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg> Practicar el apagado correcto y el reinicio del equipo.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg> Reconocer la pantalla de bloqueo y desbloquear el celular.</li>
+        </ul>
+        <a href="encender-apagar.html" target="_blank" rel="noopener" class="module-btn">Ir a Encender y apagar el
+          celular →</a>
+      </div>
+
+      <div class="module">
+        <h3><span class="m-num">3</span> Familiarizarse con la pantalla táctil</h3>
+        <p class="m-desc">La pantalla responde a gestos con los dedos: aquí aprendes los movimientos básicos para
+          moverte con seguridad.</p>
+        <h4>Actividades a desarrollar</h4>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg> Practicar el toque simple para abrir aplicaciones.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg> Deslizar hacia arriba y hacia abajo para moverse entre pantallas.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg> Pellizcar la pantalla con dos dedos para acercar o alejar una imagen.</li>
+        </ul>
+        <a href="pantalla-tactil.html" target="_blank" rel="noopener" class="module-btn">Ir a Familiarizarse con la
+          pantalla táctil →</a>
+      </div>
+
+      <div class="module">
+        <h3><span class="m-num">4</span> Configurar el Wi-Fi</h3>
+        <p class="m-desc">Conectarse a internet es la puerta de entrada a videollamadas, noticias y mensajes con la
+          familia.</p>
+        <h4>Actividades a desarrollar</h4>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg> Conectarse a una red Wi-Fi segura ingresando la contraseña.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg> Verificar que el ícono de conexión aparezca en la pantalla.</li>
+        </ul>
+        <a href="wifi.html" target="_blank" rel="noopener" class="module-btn">Ir a Configurar Wi-Fi →</a>
+      </div>
+
+      <div class="module">
+        <h3><span class="m-num">5</span> Instalar y organizar aplicaciones</h3>
+        <p class="m-desc">Aprender a descargar apps es clave para personalizar el celular y sacarle provecho día a día.
+        </p>
+        <h4>Actividades a desarrollar</h4>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg> Abrir Google Play Store o App Store según el celular.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg> Buscar aplicaciones útiles, por ejemplo WhatsApp o el correo.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg> Descargar e instalar una aplicación paso a paso.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg> Organizar las aplicaciones en carpetas según su categoría.</li>
+        </ul>
+        <a href="apps.html" target="_blank" rel="noopener" class="module-btn">Ir a Instalar y organizar aplicaciones
+          →</a>
+      </div>
+
+      <div class="module">
+        <h3><span class="m-num">6</span> Nequi: manejo de dinero digital</h3>
+        <p class="m-desc">Aprende a enviar, recibir y ahorrar dinero desde el celular, sin necesidad de una cuenta
+          bancaria tradicional.</p>
+        <h4>Actividades a desarrollar</h4>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg> Reconocer las funciones principales: enviar, recibir, pagar servicios y recargar celular.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg> Crear un "bolsillo" de ahorro con una meta propia.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg> Practicar buenas costumbres de seguridad al usar la app.</li>
+        </ul>
+        <a href="nequi.html" target="_blank" rel="noopener" class="module-btn">Ir a Nequi: manejo de dinero digital
+          →</a>
+        <a href="https://www.nequi.com.co" target="_blank" rel="noopener" class="module-btn outline">Sitio oficial de
+          Nequi ↗</a>
+      </div>
+
+      <div class="module">
+        <h3><span class="m-num">7</span> Hotmail / Outlook</h3>
+        <p class="m-desc">Aprende a usar tu cuenta de correo electrónico: enviar, recibir y organizar mensajes.</p>
+        <h4>Actividades a desarrollar</h4>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg> Iniciar sesión en outlook.com con tu cuenta @hotmail.com.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg> Enviar un correo nuevo y revisar las carpetas de la bandeja.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg> Encontrar y responder un correo con pistas.</li>
+        </ul>
+        <a href="hotmail.html" target="_blank" rel="noopener" class="module-btn">Ir a Hotmail / Outlook →</a>
+        <a href="https://outlook.com" target="_blank" rel="noopener" class="module-btn outline">Sitio oficial de Outlook
+          ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonial">
+    <div class="wrap">
+      <h2>Lo que dicen nuestros aprendices</h2>
+      <div class="testimonial-slider" id="testimonialSlider" aria-live="polite">
+        <div class="testimonial-track">
+        <div class="quote-card testimonial-slide is-active" role="group" aria-roledescription="testimonio" aria-label="1 de 5">
+          <div class="avatar">ME</div>
+          <div>
+            <blockquote>“A mis 68 años le tenía miedo al celular que me regaló mi hijo. Hoy hago videollamadas con mis nietos yo sola, sin pedirle ayuda a nadie. El instructor tuvo mucha paciencia conmigo.”</blockquote>
+            <cite>María Elena Rúa · Aprendiz del programa, Medellín</cite>
+          </div>
+        </div>
+        <div class="quote-card testimonial-slide" role="group" aria-roledescription="testimonio" aria-label="2 de 5" aria-hidden="true">
+          <div class="avatar">JG</div>
+          <div>
+            <blockquote>“Yo creía que el WhatsApp era solo para los jóvenes. Ahora les mando fotos y audios a mis hermanos que viven lejos. Me explicaron con calma y repitieron las veces que fue necesario.”</blockquote>
+            <cite>José Gilberto Pérez · Aprendiz del programa, Envigado</cite>
+          </div>
+        </div>
+        <div class="quote-card testimonial-slide" role="group" aria-roledescription="testimonio" aria-label="3 de 5" aria-hidden="true">
+          <div class="avatar">LC</div>
+          <div>
+            <blockquote>“Aprendí a usar Nequi y ya no tengo que hacer filas para pagar los servicios. Me siento más segura y más independiente. ¡Se lo recomiendo a todas mis amigas!”</blockquote>
+            <cite>Luz Marina Cardona · Aprendiz del programa, Bello</cite>
+          </div>
+        </div>
+        <div class="quote-card testimonial-slide" role="group" aria-roledescription="testimonio" aria-label="4 de 5" aria-hidden="true">
+          <div class="avatar">HR</div>
+          <div>
+            <blockquote>“Lo mejor fue que nadie me hizo sentir tonto por preguntar. Hoy tengo mi correo en Outlook y hasta le respondo a mi doctora por ahí. Un curso muy bien pensado para nosotros.”</blockquote>
+            <cite>Hernán Restrepo · Aprendiz del programa, Itagüí</cite>
+          </div>
+        </div>
+        <div class="quote-card testimonial-slide" role="group" aria-roledescription="testimonio" aria-label="5 de 5" aria-hidden="true">
+          <div class="avatar">CO</div>
+          <div>
+            <blockquote>“Con letra grande y paso a paso, por fin entendí cómo conectarme al Wi-Fi e instalar mis aplicaciones. Gracias al SENA por no dejarnos atrás en esto de la tecnología.”</blockquote>
+            <cite>Carmenza Ospina · Aprendiz del programa, Sabaneta</cite>
+          </div>
+        </div>
+        </div>
+        <div class="testimonial-dots" id="testimonialDots"><button type="button" class="t-dot active" aria-label="Ver testimonio 1"></button><button type="button" class="t-dot" aria-label="Ver testimonio 2"></button><button type="button" class="t-dot" aria-label="Ver testimonio 3"></button><button type="button" class="t-dot" aria-label="Ver testimonio 4"></button><button type="button" class="t-dot" aria-label="Ver testimonio 5"></button></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <div class="cta-box">
+        <h2>Anímate, nunca es tarde para aprender</h2>
+        <p>Inscríbete hoy al programa de Alfabetización Informática del SENA y da el primer paso hacia un celular sin
+          secretos.</p>
+        <a class="btn-inscribir" href="https://oferta.senasofiaplus.edu.co" target="_blank" rel="noopener">Quiero
+          inscribirme</a>
+        <p class="cta-note">Cupos limitados · Formación 100% gratuita y presencial</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <h4>SENA</h4>
+          <p>Servicio Nacional de Aprendizaje. Entidad pública colombiana que ofrece formación técnica y complementaria
+            gratuita para toda la vida.</p>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <ul>
+            <li>Línea gratuita: 018000 910270</li>
+            <li>www.sena.edu.co</li>
+            <li>Bogotá D.C., Colombia</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Programa</h4>
+          <ul>
+            <li>Alfabetización Informática</li>
+            <li>Duración: 70 horas</li>
+            <li>Modalidad: presencial</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 SENA – Servicio Nacional de Aprendizaje</span>
+        <span>Formación gratuita para todos los colombianos</span>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="https://cdn.jsdelivr.net/npm/firebase@10.12.2/firebase-app-compat.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/firebase@10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/firebase@10.12.2/firebase-firestore-compat.js"></script>
+  <script src="/js/script.js"></script>
+  <script src="/js/testimonios.js"></script>
+  <!-- Botón flotante de WhatsApp -->
+<a class="whatsapp-float"
+   href="https://wa.me/573218633953?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20curso"
+   target="_blank" rel="noopener noreferrer"
+   aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 32 32" width="32" height="32" aria-hidden="true" focusable="false">
+    <path fill="#fff" d="M16.004 3C9.376 3 4 8.373 4 15c0 2.116.553 4.18 1.602 5.998L4 29l8.2-1.576A11.94 11.94 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3zm0 21.8a9.77 9.77 0 0 1-4.98-1.363l-.357-.213-4.87.936.97-4.745-.233-.37A9.77 9.77 0 0 1 6.2 15c0-5.4 4.4-9.8 9.804-9.8 5.4 0 9.796 4.4 9.796 9.8s-4.396 9.8-9.796 9.8zm5.37-7.33c-.294-.147-1.74-.858-2.01-.956-.27-.098-.466-.147-.662.147-.196.294-.76.956-.932 1.152-.172.196-.343.22-.637.074-.294-.147-1.242-.458-2.366-1.46-.874-.78-1.465-1.744-1.637-2.038-.172-.294-.018-.453.13-.6.132-.132.294-.343.44-.515.148-.172.197-.294.295-.49.098-.196.05-.368-.025-.515-.074-.147-.662-1.595-.907-2.184-.238-.574-.48-.496-.662-.505l-.564-.01c-.196 0-.515.074-.785.368-.27.294-1.03 1.007-1.03 2.455s1.055 2.848 1.202 3.044c.147.196 2.077 3.172 5.03 4.448.703.303 1.252.484 1.68.62.706.224 1.348.192 1.855.116.566-.084 1.74-.71 1.986-1.397.245-.687.245-1.276.172-1.397-.074-.122-.27-.196-.564-.343z"/>
+  </svg>
+</a>
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
+    <title>Document</title>
+</head>
+<body>
+   <!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nequi: manejo de dinero digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="/css/whatsapp.css">
+</head>
+<body data-activity="funciones" data-emoji="📱">
+
+<div class="topbar"><div class="wrap"><span>Servicio Nacional de Aprendizaje</span></div></div>
+
+<header class="hero hero-grid">
+  <div class="wrap">
+    <div>
+      <a class="back-link" href="index.html">&larr; Volver al curso</a>
+    <span class="eyebrow-badge">Módulo 1</span>
+    <h1 class="title">Funciones del Celular</h1>
+    </div>
+    <div class="hero-art">
+      <div class="phone">
+        <div class="dot"></div>
+        <p>¡Hola! Hoy aprenderás sobre algunas funciones Principales del celular.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <p class="lead">Las funciones de un celular se activan y desactivan principalmente desde el panel de accesos rápidos (deslizando el dedo desde la parte superior de la pantalla hacia abajo) o desde la aplicación de Ajustes/Configuración.</p>
+    <p>El panel de accesos rápidos es la forma más sencilla de activar o desactivar funciones esenciales del celular, como Wi-Fi, Bluetooth, linterna o modo avión.</p>
+
+    
+     <div class="cards-grid">
+        <div class="card-item">
+          <img src="/imagenes/funciones.avif" alt="App 1">
+          <p>Imagen de algunas funciones del celular</p>
+        </div>
+        <div class="card-item">
+          <img src="/imagenes/funciones2.avif" alt="App 2">
+          <p>Imagen de como es el logo del Bluetooth en nuestro celular</p>
+        </div>
+        <div class="card-item">
+          <img src="/imagenes/funciones3.jpeg" alt="App 3">
+          <p>Imagen de como es el logo de los datos en nuestro celular</p>
+        </div>
+        <div class="card-item">
+          <img src="/imagenes/funciones4.jpeg" alt="App 4">
+          <p>Imagen de como es el logo de la zona wi-fi en nuestro celular</p>
+        </div>
+      </div>
+    <div class="card">
+      <h2>Funciones principales</h2>
+      <ul>
+        <li><strong>Wi-Fi:</strong> Nos ayuda conectarnos a una red conocida para tener internet.</li>
+        <li><strong>Bluetooth:</strong> Nos ayuda a conectarnos a un dispositivo conocido como puede ser el equipo de sonido.</li>
+        <li><strong>Datos Móviles:</strong> Nos ayudan a estar conectados con el provedor de servicio para tener internet en la calle.</li>
+        <li><strong>Ubicación (GPS):</strong> Nos ayuda a mostrar nuestra ubicacion en tiempor real.</li>
+        <li><strong>Modo Avión:</strong> Desactiva por completo el Wi-Fi, los datos y las llamadas.</li>
+        <li><strong>Ahorro de Batería:</strong> Sirve para ahorrar energia.</li>
+      </ul>
+    </div>    
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="activity">
+      <h2>Actividad de Funciones del celular</h2>
+      <p>Pon en práctica lo aprendido con tu propio celular:</p>
+      <div class="task" id="taskText">📱 A la espera que el profesor monte la actividad</div>
+      <div class="preview-grid" id="taskImages" style="margin-bottom:22px;"></div>
+    </div>
+    <div class="submit-card" id="submitCard">
+      <h2>📤 Sube tu evidencia</h2>
+      <p>Escribe tu número de cédula y adjunta una o varias capturas de pantalla que muestren que hiciste la actividad.</p>
+      <p class="hint">Usa imágenes livianas. Tu profesor podrá descargarlas y ponerte una nota que verás aquí mismo.</p>
+
+      <div class="grade-banner" id="gradeBanner" hidden>
+        <span class="grade-label">Tu calificación</span>
+        <strong id="gradeValue"></strong>
+        <p id="gradeComment"></p>
+      </div>
+
+      <form id="formEntrega" class="login-form">
+        <input type="text" inputmode="numeric" id="entregaCedula" placeholder="Tu número de cédula" required>
+        <label class="btn-upload" for="entregaArchivos">Elegir capturas de pantalla</label>
+        <input type="file" id="entregaArchivos" accept="image/*" multiple style="display:none;">
+        <div class="preview-grid" id="entregaPreview"></div>
+        <button type="submit" class="btn-login">Enviar evidencia</button>
+      </form>
+      <p class="form-msg" id="msgEntrega"></p>
+    </div>
+  </div>
+</section>
+
+<footer>SENA · Alfabetización Informática</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/firebase@10.12.2/firebase-app-compat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/firebase@10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/firebase@10.12.2/firebase-storage-compat.js"></script>
+<script src="/js/script.js"></script>
+<!-- Botón flotante de WhatsApp -->
+<a class="whatsapp-float"
+   href="https://wa.me/573218633953?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20curso"
+   target="_blank" rel="noopener noreferrer"
+   aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 32 32" width="32" height="32" aria-hidden="true" focusable="false">
+    <path fill="#fff" d="M16.004 3C9.376 3 4 8.373 4 15c0 2.116.553 4.18 1.602 5.998L4 29l8.2-1.576A11.94 11.94 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3zm0 21.8a9.77 9.77 0 0 1-4.98-1.363l-.357-.213-4.87.936.97-4.745-.233-.37A9.77 9.77 0 0 1 6.2 15c0-5.4 4.4-9.8 9.804-9.8 5.4 0 9.796 4.4 9.796 9.8s-4.396 9.8-9.796 9.8zm5.37-7.33c-.294-.147-1.74-.858-2.01-.956-.27-.098-.466-.147-.662.147-.196.294-.76.956-.932 1.152-.172.196-.343.22-.637.074-.294-.147-1.242-.458-2.366-1.46-.874-.78-1.465-1.744-1.637-2.038-.172-.294-.018-.453.13-.6.132-.132.294-.343.44-.515.148-.172.197-.294.295-.49.098-.196.05-.368-.025-.515-.074-.147-.662-1.595-.907-2.184-.238-.574-.48-.496-.662-.505l-.564-.01c-.196 0-.515.074-.785.368-.27.294-1.03 1.007-1.03 2.455s1.055 2.848 1.202 3.044c.147.196 2.077 3.172 5.03 4.448.703.303 1.252.484 1.68.62.706.224 1.348.192 1.855.116.566-.084 1.74-.71 1.986-1.397.245-.687.245-1.276.172-1.397-.074-.122-.27-.196-.564-.343z"/>
+  </svg>
+</a>
+</body>
+</html>
