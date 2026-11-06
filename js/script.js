@@ -647,7 +647,34 @@
       grid.appendChild(item);
     });
     card.appendChild(grid);
+    card.appendChild(form);
+    card.appendChild(msg);
 
+    /* ---- Botón: eliminar toda la entrega ---- */
+    const btnEliminar = document.createElement('button');
+    btnEliminar.type = 'button';
+    btnEliminar.className = 'btn-eliminar-entrega';
+    btnEliminar.textContent = '🗑 Eliminar entrega completa';
+    btnEliminar.addEventListener('click', async ()=>{
+      const ok = confirm('¿Eliminar TODA la entrega de la cédula ' + data.cedula +
+        '?\nSe borrarán las imágenes y la nota. Esta acción no se puede deshacer.');
+      if (!ok) return;
+      btnEliminar.disabled = true;
+      btnEliminar.textContent = 'Eliminando...';
+      try{
+        await db.collection('entregas').doc(docId).delete();
+        // No hay que quitar la tarjeta a mano: onSnapshot de renderEntregas() la redibuja solo.
+      } catch(err){
+        msg.textContent = 'Error (' + err.code + '): ' + err.message;
+        msg.className = 'form-msg error';
+        btnEliminar.disabled = false;
+        btnEliminar.textContent = '🗑 Eliminar entrega completa';
+      }
+    });
+    card.appendChild(btnEliminar);
+
+    return card;
+  }
     const form = document.createElement('form');
     form.className = 'login-form entrega-grade-form';
     const notaInput = document.createElement('input');
