@@ -354,19 +354,4 @@ footer ul{list-style:none; padding:0; margin:0;}
 @media (prefers-reduced-motion: reduce) {
   .whatsapp-float::before { animation: none; }
 }
-/* Botón eliminar entrega completa */
-.btn-eliminar-entrega{
-  display:block; width:100%; margin-top:14px;
-  background:#c62828; color:#fff; border:0; border-radius:10px;
-  padding:12px 16px; font-size:1rem; font-weight:700; cursor:pointer;
-}
-.btn-eliminar-entrega:hover{ background:#a31f1f; }
-.btn-eliminar-entrega:disabled{ opacity:.6; cursor:wait; }
 
-/* Botón ✕ para eliminar una imagen (esquina superior derecha) */
-.preview-item .btn-del-img{
-  position:absolute; top:4px; right:4px; width:26px; height:26px;
-  border-radius:50%; border:none; background:#c62828; color:#fff;
-  font-size:14px; cursor:pointer; line-height:1;
-}
-.preview-item .btn-del-img:hover{ background:#a31f1f; }
