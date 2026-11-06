@@ -644,10 +644,32 @@
       dl.title = 'Descargar ' + (f.nombre || 'archivo');
       dl.addEventListener('click', ()=> descargarEvidencia(f.url, f.nombre));
       item.appendChild(dl);
+
+      /* ---- Botón ✕: eliminar solo esta imagen ---- */
+      const del = document.createElement('button');
+      del.type = 'button';
+      del.className = 'btn-del-img';
+      del.textContent = '✕';
+      del.title = 'Eliminar esta imagen';
+      del.addEventListener('click', async ()=>{
+        if (!confirm('¿Eliminar esta imagen de la entrega?')) return;
+        try{
+          const restantes = (data.archivos || []).filter(x => x !== f);
+          if (restantes.length === 0) {
+            // Era la última imagen: se elimina la entrega completa
+            await db.collection('entregas').doc(docId).delete();
+          } else {
+            await db.collection('entregas').doc(docId).update({ archivos: restantes });
+          }
+        } catch(err){
+          alert('No se pudo eliminar: ' + (err.code || err.message));
+        }
+      });
+      item.appendChild(del);
       grid.appendChild(item);
     });
     card.appendChild(grid);
-     
+
     const form = document.createElement('form');
     form.className = 'login-form entrega-grade-form';
     const notaInput = document.createElement('input');
@@ -694,6 +716,30 @@
 
     card.appendChild(form);
     card.appendChild(msg);
+
+    /* ---- Botón: eliminar toda la entrega ---- */
+    const btnEliminar = document.createElement('button');
+    btnEliminar.type = 'button';
+    btnEliminar.className = 'btn-eliminar-entrega';
+    btnEliminar.textContent = '🗑 Eliminar entrega completa';
+    btnEliminar.addEventListener('click', async ()=>{
+      const ok = confirm('¿Eliminar TODA la entrega de la cédula ' + data.cedula +
+        '?\nSe borrarán las imágenes y la nota. Esta acción no se puede deshacer.');
+      if (!ok) return;
+      btnEliminar.disabled = true;
+      btnEliminar.textContent = 'Eliminando...';
+      try{
+        await db.collection('entregas').doc(docId).delete();
+        // La tarjeta desaparece sola: onSnapshot de renderEntregas() redibuja la lista.
+      } catch(err){
+        msg.textContent = 'Error (' + err.code + '): ' + err.message;
+        msg.className = 'form-msg error';
+        btnEliminar.disabled = false;
+        btnEliminar.textContent = '🗑 Eliminar entrega completa';
+      }
+    });
+    card.appendChild(btnEliminar);
+
     return card;
   }
 
